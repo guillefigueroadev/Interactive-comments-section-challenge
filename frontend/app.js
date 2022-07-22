@@ -1,7 +1,7 @@
+import {WebcomponentUtil} from './src/core/shared/util/web-component.util.js';
 import {HttpService} from './src/core/services/http.service.js';
-import {EndPoints} from './src/shared/end-points/end-points.js';
+import {EndPoints} from './src/core/shared/end-points/end-points.js';
 import {CommentsController} from '../backend/index.js';
-//aqui hacer llamaod al api para obtener
 
 class App {
   httpService;
@@ -14,19 +14,16 @@ class App {
     this.httpService = new HttpService();
   }
 
-  async #getAllComments() {
+  #getAllComments() {
     const target = document.querySelector('#comments');
-    const response = await this.httpService.get(EndPoints.getAllComments, CommentsController);
+    const {comments, currentUser} = this.httpService.get(EndPoints.getAllComments, CommentsController);
 
-    if (response) {
-
-      console.log(response);
-
-     
+    if (comments) {
+      WebcomponentUtil.inject(comments, 'comment-card-component', target);
     }
    
     //consumir backend con servicio http
-    //aqui crear template segun el resultado del localStorage con el forEach
+    //aqui crear template segun el resultado del sessionStorage con el forEach
   }
 } 
 new App().init();

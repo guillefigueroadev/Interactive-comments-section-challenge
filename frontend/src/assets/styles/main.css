@@ -1,0 +1,39 @@
+@font-face {
+  font-family: RubikRegular;
+  src: url('../fonts/Rubik-Regular.ttf');
+}
+
+@font-face {
+  font-family: RubikMedium;
+  src: url('../fonts/Rubik-Medium.ttf');
+}
+
+@font-face {
+  font-family: RubikBold;
+  src: url('../fonts/Rubik-Bold.ttf');
+}
+
+html {
+  --color-moderate-blue: hsl(238, 40%, 52%);
+  --color-soft-red: hsl(358, 79%, 66%);
+  --color-light-grayish-blue: hsl(239, 57%, 85%);
+  --color-pale-red: hsl(357, 100%, 86%);
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-gray: hsl(212, 45%, 89%);
+  --color-grayish-blue: hsl(220, 15%, 55%);
+  --color-dark-blue: hsl(218, 44%, 22%);
+  --color-very-light-gray: hsl(228, 33%, 97%);
+
+  background-color: var(--color-very-light-gray);
+  font-family: RubikRegular;
+  font-size: 16px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 3%;
+}

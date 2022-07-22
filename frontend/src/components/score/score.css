@@ -1,0 +1,17 @@
+.score {
+  background-color: var(--color-very-light-gray);
+  border-radius: 10px;
+  width: 37px;
+}
+
+.score__container {
+  padding: 10.5px;
+}
+
+.score__icon {
+  cursor: pointer;
+}
+
+.score__number {
+  text-align: center;
+}

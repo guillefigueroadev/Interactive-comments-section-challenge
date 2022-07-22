@@ -1,0 +1,39 @@
+.comment-card {
+  margin-bottom: 18px;
+}
+
+.comment-card__container {
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  display: flex;
+  width: 653px;
+}
+
+.comment-card__container-item {
+  padding: 20px;
+}
+
+.comment-card__child {
+  position: relative;
+}
+
+.comment-card__child::after {
+  content: '';
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-light-gray);
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  left: 35px;
+}
+
+.comment-card__childContainer .comment-card {
+  display: flex;
+    justify-content: flex-end;
+}
+
+.comment-card__childContainer .comment-card__container {
+  width: 573px;
+}
