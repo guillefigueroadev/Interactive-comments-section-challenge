@@ -1,11 +1,35 @@
 <div class="comment-card">
   <div class="comment-card__container">
-    <div class="comment-card__container-item">
+    <div class="comment-card__container-item comment-card__score">
       <score-component></score-component>
     </div>
 
     <div class="comment-card__container-item">
-        cuerpo
+      <div class="comment-card__info">
+        <div class="comment-card__info-item">
+          <div class="comment-card__userProfile">
+            <img class="comment-card__userProfile-image" src="{{userImage}}" alt="{{username}}" width="33px" height="33px" />
+            <p class="comment-card__userProfile-name">
+              {{username}}
+
+              <span class="comment-card__userProfile-date">{{createdAt}}</span>
+            </p>
+          </div>
+
+          <div class="comment-card__reply">
+            <object data="/frontend/src/assets/icons/icon-reply.svg" width="14" height="14"> </object>
+            <p class="comment-card__reply-text"> Reply</p>
+          </div>
+        </div>
+
+        <div class="comment-card__info-item">
+          <p class="comment-card__info-content">
+            <span class="comment-card__info-content--replyingTo">{{replyingTo}}</span> 
+            {{content}}
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
