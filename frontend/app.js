@@ -19,7 +19,7 @@ class App {
     const {comments, currentUser} = this.httpService.get(EndPoints.getAllComments, CommentsController);
 
     if (comments) {
-      WebcomponentUtil.inject(comments, 'comment-card-component', target);
+      WebcomponentUtil.inject(comments, 'comment-card-component', target, 'commentsSession');
     }
    
     //consumir backend con servicio http

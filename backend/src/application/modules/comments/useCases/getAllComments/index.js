@@ -2,7 +2,11 @@ import CommentsMockJson from '../../../../../application/mocks/comments.mock.jso
 
 export class GetAllComments {
   static Execute() {
-    const checkData = sessionStorage.getItem('commentsData') || CommentsMockJson;
-    return checkData;
+    const sessionData = JSON.parse(sessionStorage.getItem('commentsSession'));
+    if(sessionData) {
+      CommentsMockJson.comments = sessionData;
+    }
+
+    return CommentsMockJson;
   }
 }

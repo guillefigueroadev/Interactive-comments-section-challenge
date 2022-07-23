@@ -17,7 +17,7 @@ class ScoreComponent extends HTMLElement {
   }
 
   #initDataInformation(htmlTemplateAsString) {
-    this.currentValue = this.currentValue || 1;
+    this.currentValue = this.currentValue || 0;
     const parent = Handlers.replaceHandlebarsOnTemplate(htmlTemplateAsString, {score: this.currentValue});
     const container = document.createElement('div');
     container.innerHTML = parent;
@@ -29,15 +29,13 @@ class ScoreComponent extends HTMLElement {
     const scoreNumber = this.shadowRoot.querySelector('.score__number');
     this.shadowRoot.querySelector('.iconPlus').addEventListener('click', (event) => {
       this.currentValue = this.currentValue + 1;
-      event.selectedType = 'plus';
-      event.selectedValue = this.currentValue;
+      Handlers.createCustomEvent('scoreOutput', {selectedValue: this.currentValue, selectedType: 'plus'}, this);
       scoreNumber.innerHTML = this.currentValue;
     });
 
     this.shadowRoot.querySelector('.iconMinus').addEventListener('click', (event) => {
       this.currentValue = ((this.currentValue - 1) < 0) ? 0 : this.currentValue - 1;
-      event.selectedType = 'minus';
-      event.selectedValue = this.currentValue;
+      Handlers.createCustomEvent('scoreOutput', {selectedValue: this.currentValue, selectedType: 'minus'}, this);
       scoreNumber.innerHTML = this.currentValue;
     });
   }

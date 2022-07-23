@@ -38,7 +38,7 @@ class CommentCardComponent extends HTMLElement {
     container.innerHTML = parent;
     container.appendChild(nestedChild);
     this.shadowRoot.append(container);
-    this.#scoreIteractions(container, this.data.score);
+    this.#scoreIteractions(container, this.data.score, this.data);
   }
 
   #initComponentIteractions() {
@@ -69,20 +69,23 @@ class CommentCardComponent extends HTMLElement {
         childContainer.appendChild(nestedReply);
       }
 
-      this.#scoreIteractions(childContainer, reply.score);
+      this.#scoreIteractions(childContainer, reply.score, reply);
       nestedChild.appendChild(childContainer);
     });
 
     return nestedChild;
   }
 
-  #scoreIteractions(container, score) {
+  #scoreIteractions(container, score, commentData) {
     const scoreComponentSelector = container.querySelector('score-component');
     scoreComponentSelector.currentValue = score;
-    //ver como crear un callback en js similar al onclick
-    scoreComponentSelector.onclick = (event) => {
-      console.log(event);
-    }
+    scoreComponentSelector.addEventListener('scoreOutput', ({detail}) => {
+      if (detail) {
+        const {selectedType, selectedValue} = detail;
+        commentData.score = selectedValue
+        Handlers.createCustomEvent('outPut', {response: commentData}, this);
+      }
+    })
   }
 
 }

@@ -8,4 +8,9 @@ export class Handlers {
 
     return htmlTemplateAsString;
   }
+
+  static createCustomEvent(eventName, data, targetElement) {
+    const event = new CustomEvent(eventName, { detail: data });
+    targetElement.dispatchEvent(event);
+  }
 }
